@@ -4,20 +4,24 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.greetingcard.ui.theme.GreetingCardTheme
+import androidx.compose.ui.unit.dp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        // the entry point of the program - calls other functions to build the ui
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent {
+        setContent { // defines layout
             GreetingCardTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
@@ -30,18 +34,20 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
+@Composable // note the similarity to function components from Web frameworks
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+    Surface(color = Color.Cyan) {
+        Text(
+            text = "Hi, my name is $name!",
+            modifier = modifier.padding(24.dp)
+        )
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     GreetingCardTheme {
-        Greeting("Android")
+        Greeting("Jospin Muhanuzi")
     }
 }
