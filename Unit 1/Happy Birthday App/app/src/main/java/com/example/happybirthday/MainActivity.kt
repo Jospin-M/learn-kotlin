@@ -20,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -37,10 +38,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background,
                     content = {
-                        GreetingText(
-                            modifier = Modifier.padding(8.dp),
-                            message = "Happy Birthday LeBron!",
-                            from = "Jospin")
+                        GreetingImage(
+                            message = stringResource(R.string.happy_birthday_text),
+                            from = "Jospin"
+                        )
                     }
                 )
             }
@@ -62,7 +63,7 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
         )
 
         Text(
-            text = "From: $from",
+            text = stringResource(R.string.signature_text) + ": $from",
             fontSize = 36.sp,
             textAlign = TextAlign.Left
         )
