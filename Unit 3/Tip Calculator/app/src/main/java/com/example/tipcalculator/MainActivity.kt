@@ -97,8 +97,10 @@ private fun calculateTip(amount: Double, tipPercent: Double = 15.0): String {
 
 @Composable
 fun EditNumberField(modifier: Modifier = Modifier) {
+    val amountInput = "0"
+
     TextField(
-        value = "",
+        value = amountInput,
         onValueChange = {},
         modifier = modifier
     )
