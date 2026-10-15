@@ -147,7 +147,7 @@ private fun calculateTip(
     tipPercent: Double = 15.0,
     roundUp: Boolean
 ): String {
-    var tip = tipPercent / (100 * amount)
+    var tip = amount * tipPercent / 100
 
     if(roundUp) {
         tip = kotlin.math.ceil(tip)
@@ -158,14 +158,14 @@ private fun calculateTip(
 
 @Composable
 fun RoundTheTipRow(
+    modifier: Modifier = Modifier,
     roundUp: Boolean = false,
-    onRoundUpChanged: (Boolean) -> Unit,
-    modifier: Modifier = Modifier
+    onRoundUpChanged: (Boolean) -> Unit
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .size(48.dp),
+            .height(48.dp),
         verticalAlignment = Alignment.CenterVertically,
         content = {
             Text(text = stringResource(R.string.round_up_tip))
