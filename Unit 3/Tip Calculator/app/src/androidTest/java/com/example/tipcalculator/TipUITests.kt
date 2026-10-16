@@ -1,0 +1,34 @@
+package com.example.tipcalculator
+
+import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performTextInput
+import com.example.tipcalculator.ui.theme.TipTimeTheme
+import org.junit.Rule
+import org.junit.Test
+import java.text.NumberFormat
+
+class TipUITests {
+    @get:Rule
+    val composeTestRule = createComposeRule()
+
+    @Test
+    fun calculate_20_percent_tip() {
+        composeTestRule.setContent {
+            TipTimeTheme() {
+                TipTimeLayout()
+            }
+        }
+
+        composeTestRule.onNodeWithText("Bill Amount")
+            .performTextInput("0")
+
+        composeTestRule.onNodeWithText("Tip Percentage")
+            .performTextInput("20")
+
+        val expectedTip = NumberFormat.getCurrencyInstance().format(2)
+        composeTestRule.onNodeWithText("Tip Amount: $expectedTip")
+            .assertExists("No node with this text is found.")
+    }
+}
